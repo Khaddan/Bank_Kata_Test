@@ -8,14 +8,14 @@ import java.util.List;
 public class Account implements AccountService {
     private int balance = 0;
     private final List<Transaction> transactions = new ArrayList<>();
-    LocalDate simulatedDate = LocalDate.now(); // Date simulée pour respecter les tests
+    LocalDate simulatedDate = LocalDate.now();
 
     @Override
     public void deposit(int amount) {
         balance += amount;
         String date = formatDate(simulatedDate);
         transactions.add(new Transaction(date, amount, balance));
-        simulateNextDate(); // Avancer la date pour le prochain test
+        simulateNextDate();
     }
 
     @Override
@@ -23,7 +23,7 @@ public class Account implements AccountService {
         balance -= amount;
         String date = formatDate(simulatedDate);
         transactions.add(new Transaction(date, -amount, balance));
-        simulateNextDate(); // Avancer la date pour le prochain test
+        simulateNextDate();
     }
 
     @Override
@@ -36,7 +36,7 @@ public class Account implements AccountService {
     }
 
     private void simulateNextDate() {
-        simulatedDate = simulatedDate.plusDays(3); // Avance de 3 jours à chaque transaction (10, 13, 14 janvier)
+        simulatedDate = simulatedDate.plusDays(3);
     }
 
     private String formatDate(LocalDate date) {
