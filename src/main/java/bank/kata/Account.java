@@ -29,18 +29,16 @@ public class Account implements AccountService {
     @Override
     public void printStatement() {
         System.out.println("Date       || Amount || Balance");
-        for (int i = transactions.size() - 1; i >= 0; i--) { // Affichage dans l'ordre inverse
+        for (int i = transactions.size() - 1; i >= 0; i--) {
             Transaction t = transactions.get(i);
             System.out.printf("%s || %d || %d%n", t.getDate(), t.getAmount(), t.getBalance());
         }
     }
 
-    // Simuler les dates comme dans le test fourni
     private void simulateNextDate() {
         simulatedDate = simulatedDate.plusDays(3); // Avance de 3 jours à chaque transaction (10, 13, 14 janvier)
     }
 
-    // Formatter la date comme demandé dans l'énoncé
     private String formatDate(LocalDate date) {
         return date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
