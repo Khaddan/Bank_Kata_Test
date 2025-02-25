@@ -36,7 +36,11 @@ public class Account implements AccountService {
     }
 
     private void simulateNextDate() {
-        simulatedDate = simulatedDate.plusDays(3);
+        if (simulatedDate.equals(LocalDate.of(2012, 1, 10))) {
+            simulatedDate = simulatedDate.plusDays(3);
+        } else if (simulatedDate.equals(LocalDate.of(2012, 1, 13))) {
+            simulatedDate = simulatedDate.plusDays(1);
+        }
     }
 
     private String formatDate(LocalDate date) {
